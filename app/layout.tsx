@@ -10,6 +10,7 @@ const publicSiteUrl =
   process.env.GITHUB_PAGES === "true"
     ? `https://${process.env.GITHUB_REPOSITORY_OWNER ?? "rudebeans"}.github.io/${repositoryName}`
     : "https://tied-and-true.sites.openai.com";
+const socialImageUrl = `${publicSiteUrl}/og.png`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(publicSiteUrl),
@@ -26,13 +27,13 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Tied & True Balloons",
     description: "Making Moments Worth Celebrating",
-    images: [{ url: assetPath("/og.png"), width: 1732, height: 909 }],
+    images: [{ url: socialImageUrl, width: 1732, height: 909 }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Tied & True Balloons",
     description: "Making Moments Worth Celebrating",
-    images: [assetPath("/og.png")],
+    images: [socialImageUrl],
   },
 };
 
