@@ -11,7 +11,7 @@ const faqs = [
   {
     question: "How far in advance should I book?",
     answer:
-      "The sooner, the better—especially for weekends and larger installations. Share your date even if you’re still deciding on the details.",
+      "The sooner, the better, especially for weekends and larger installations. Share your date even if you’re still deciding on the details.",
   },
   {
     question: "Where do you deliver?",

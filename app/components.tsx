@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { assetPath } from "./asset-path";
 
 const navigation = [
   { href: "/", label: "Home" },
@@ -122,12 +123,13 @@ export function ClosingCta({
           Request a quote <span aria-hidden="true">↗</span>
         </Link>
       </div>
-      <div className="closing-art">
+      <div className="closing-art" data-parallax="130">
         <Image
-          alt="Tied and True balloon lettering"
+          alt="Tied and True balloon lettering in tonal periwinkle"
           fill
           sizes="(max-width: 800px) 100vw, 45vw"
-          src="/brand/logo-pink.jpg"
+          src={assetPath("/brand/tied-true-periwinkle.jpg")}
+          unoptimized
         />
       </div>
     </section>

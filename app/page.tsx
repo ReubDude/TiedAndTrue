@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { assetPath } from "./asset-path";
 import { ClosingCta } from "./components";
 
 const celebrations = [
@@ -22,20 +23,76 @@ const favorites = [
   { number: "04", title: "Branded displays", note: "Polished décor for schools and businesses" },
 ];
 
+const featuredWork = [
+  {
+    src: assetPath("/work/pastel-installation.jpg"),
+    alt: "Pastel balloon arch framing an entrance in a light-filled venue",
+    title: "Pastel, but make it grand",
+    category: "Statement installation",
+    className: "work-card work-card-lead",
+  },
+  {
+    src: assetPath("/work/birthday-celebration.jpg"),
+    alt: "Blush, teal, and gold birthday balloon installation around a shimmering backdrop",
+    title: "A birthday in full color",
+    category: "Private celebration",
+    className: "work-card work-card-square",
+  },
+  {
+    src: assetPath("/work/venue-installation.jpg"),
+    alt: "Warm neutral balloons suspended in a glass-roofed event venue",
+    title: "A room-changing arrival",
+    category: "Full-service event",
+    className: "work-card work-card-wide",
+  },
+  {
+    src: assetPath("/work/emerald-installation.jpg"),
+    alt: "Emerald and seafoam balloon installation with tropical greenery and orchids",
+    title: "Botanical after dark",
+    category: "Milestone celebration",
+    className: "work-card work-card-square",
+  },
+  {
+    src: assetPath("/work/bridal-shower.jpg"),
+    alt: "Blush and rose-gold balloon garland in an elegant dining room",
+    title: "Soft blush, polished setting",
+    category: "Bridal shower",
+    className: "work-card work-card-landscape",
+  },
+  {
+    src: assetPath("/work/rooftop-installation.jpg"),
+    alt: "Muted blush and ivory balloon installation on a rooftop beneath a blue sky",
+    title: "A toast above the city",
+    category: "Brand event",
+    className: "work-card work-card-tall",
+  },
+];
+
 export default function Home() {
   return (
     <>
-      <section className="hero">
-        <div className="hero-copy">
-          <p className="eyebrow">Custom balloon décor • DFW</p>
-          <h1>
-            Making Moments <em>Worth</em> Celebrating
-          </h1>
-          <p className="hero-body">
-            Whether you&apos;re celebrating a birthday, welcoming a new baby, hosting
-            a corporate event, or planning a school celebration, Tied &amp; True
-            turns ordinary spaces into unforgettable moments.
-          </p>
+      <section className="campaign-hero">
+        <div className="campaign-hero-art" data-parallax="64">
+          <Image
+            alt="Tied and True balloon lettering with the message Making Moments Worth Celebrating"
+            fill
+            priority
+            sizes="100vw"
+            src={assetPath("/og.png")}
+            unoptimized
+          />
+          <h1 className="sr-only">Making Moments Worth Celebrating</h1>
+        </div>
+        <div className="campaign-hero-details">
+          <div>
+            <p className="eyebrow">Custom balloon décor • Dallas–Fort Worth</p>
+            <p className="hero-body">
+              Whether you&apos;re celebrating a birthday, welcoming a new baby,
+              hosting a corporate event, or planning a school celebration,
+              Tied &amp; True turns ordinary spaces into unforgettable moments.
+            </p>
+            <p className="hero-note">Thoughtfully designed • Stress-free from start to finish</p>
+          </div>
           <div className="button-row">
             <Link className="button button-dark" href="/book">
               Request a quote <span aria-hidden="true">↗</span>
@@ -44,17 +101,43 @@ export default function Home() {
               View our work <span aria-hidden="true">→</span>
             </Link>
           </div>
-          <p className="hero-note">Proudly serving Dallas–Fort Worth</p>
         </div>
-        <div className="hero-art">
-          <Image
-            alt="Tied and True logo made from glossy pink balloon lettering"
-            fill
-            priority
-            sizes="(max-width: 800px) 100vw, 50vw"
-            src="/brand/logo-cream.jpg"
-          />
-          <span className="hero-sticker">Good times, tied up nicely</span>
+      </section>
+
+      <section className="work-showcase" aria-labelledby="selected-work-heading">
+        <div className="work-showcase-intro">
+          <p className="eyebrow">Selected celebrations</p>
+          <h2 id="selected-work-heading">Designed for the room, remembered long after.</h2>
+          <div>
+            <p>
+              Every installation begins with your space, your palette, and the feeling
+              you want guests to carry with them. The result is thoughtful, dimensional,
+              and entirely your own.
+            </p>
+            <Link className="text-link" href="/products">
+              Discover what we create <span aria-hidden="true">→</span>
+            </Link>
+          </div>
+        </div>
+
+        <div className="work-grid">
+          {featuredWork.map((item) => (
+            <figure className={item.className} key={item.src}>
+              <div className="work-card-image" data-parallax="120">
+                <Image
+                  alt={item.alt}
+                  fill
+                  sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 40vw"
+                  src={item.src}
+                  unoptimized
+                />
+              </div>
+              <figcaption>
+                <span>{item.category}</span>
+                <strong>{item.title}</strong>
+              </figcaption>
+            </figure>
+          ))}
         </div>
       </section>
 

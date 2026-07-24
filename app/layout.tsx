@@ -1,9 +1,18 @@
 import type { Metadata } from "next";
+import { assetPath } from "./asset-path";
 import { SiteFooter, SiteHeader } from "./components";
+import { ParallaxMotion } from "./parallax-motion";
 import "./globals.css";
 
+const repositoryName =
+  process.env.GITHUB_REPOSITORY?.split("/")[1] ?? "TiedAndTrue";
+const publicSiteUrl =
+  process.env.GITHUB_PAGES === "true"
+    ? `https://${process.env.GITHUB_REPOSITORY_OWNER ?? "rudebeans"}.github.io/${repositoryName}`
+    : "https://tied-and-true.sites.openai.com";
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://tied-and-true.sites.openai.com"),
+  metadataBase: new URL(publicSiteUrl),
   title: {
     default: "Tied & True Balloons | Dallas–Fort Worth",
     template: "%s | Tied & True Balloons",
@@ -11,19 +20,19 @@ export const metadata: Metadata = {
   description:
     "Custom balloon installations, grab-and-go garlands, bouquets, and celebration décor serving Dallas–Fort Worth.",
   icons: {
-    icon: "/favicon.png",
-    shortcut: "/favicon.png",
+    icon: assetPath("/favicon.png"),
+    shortcut: assetPath("/favicon.png"),
   },
   openGraph: {
     title: "Tied & True Balloons",
     description: "Making Moments Worth Celebrating",
-    images: [{ url: "/og.png", width: 1732, height: 909 }],
+    images: [{ url: assetPath("/og.png"), width: 1732, height: 909 }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Tied & True Balloons",
     description: "Making Moments Worth Celebrating",
-    images: ["/og.png"],
+    images: [assetPath("/og.png")],
   },
 };
 
@@ -38,6 +47,7 @@ export default function RootLayout({
         <SiteHeader />
         <main>{children}</main>
         <SiteFooter />
+        <ParallaxMotion />
       </body>
     </html>
   );

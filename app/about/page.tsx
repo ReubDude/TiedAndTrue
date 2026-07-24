@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { assetPath } from "../asset-path";
 import { ClosingCta, PageIntro } from "../components";
 
 const values = [
@@ -37,18 +38,19 @@ export default function AboutPage() {
       <PageIntro
         eyebrow="About Tied & True"
         title="Meet Nicole"
-        body="The balloon-loving creator behind Tied & True—and your biggest cheerleader when it comes to celebrating life’s special moments."
+        body="The balloon-loving creator behind Tied & True, and your biggest cheerleader when it comes to celebrating life’s special moments."
         tone="blue"
       />
 
       <section className="about-story">
-        <div className="about-art">
+        <div className="about-art" data-parallax="130">
           <Image
-            alt="Tied and True balloon lettering in butter yellow on a blue background"
+            alt="Tied and True balloon lettering in tonal periwinkle"
             fill
             priority
             sizes="(max-width: 800px) 100vw, 45vw"
-            src="/brand/logo-blue.jpg"
+            src={assetPath("/brand/tied-true-periwinkle.jpg")}
+            unoptimized
           />
           <span className="about-caption">Oak Cliff made • Party approved</span>
         </div>
@@ -73,7 +75,7 @@ export default function AboutPage() {
             become part of the memories people take home.
           </p>
           <blockquote>
-            “It&apos;s not really about the balloons—it&apos;s about how they make people
+            “It&apos;s not really about the balloons. It&apos;s about how they make people
             feel.”
           </blockquote>
         </div>
